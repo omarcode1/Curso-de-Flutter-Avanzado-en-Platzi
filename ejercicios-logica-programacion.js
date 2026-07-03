@@ -11,21 +11,130 @@
 
 // L1 — Suma acumulada del 1 al N
 //
+// ENUNCIADO
 // Escribe un programa que reciba un número entero positivo n e imprima la suma
 // 1 + 2 + 3 + ... + n.
 //
-// Ejemplo: n = 5 → 15
+// Ejemplo: n = 5 → 15  (porque 1 + 2 + 3 + 4 + 5 = 15)
+//
+// ---------------------------------------------------------------------------
+// ¿QUÉ PROBLEMA RESOLVEMOS?
+// ---------------------------------------------------------------------------
+// Imagina que tienes que sumar todos los números desde 1 hasta n.
+// Si n = 5, vas sumando de uno en uno: 1, luego 1+2, luego 1+2+3, etc.
+// No conviene escribir la suma a mano para cada n; usamos un bucle.
+//
+// ---------------------------------------------------------------------------
+// METÁFORA DE LA RECETA (análisis antes de codificar)
+// ---------------------------------------------------------------------------
+// 1. Objetivo: obtener un solo número — la suma total del 1 al n.
+// 2. Ingredientes (variables):
+//    - n        → el límite (entrada del usuario o parámetro)
+//    - i        → contador del bucle (1, 2, 3, ..., n)
+//    - suma     → acumulador; empieza en 0 y va guardando el total parcial
+// 3. Pasos (bucle):
+//    - Repetir desde i = 1 hasta i = n
+//    - En cada vuelta: suma = suma + i
+// 4. Prueba: con n = 5 debe dar 15; con n = 1 debe dar 1; con n = 100 → 5050
+//
+// ---------------------------------------------------------------------------
+// ¿QUÉ ES UN ACUMULADOR?
+// ---------------------------------------------------------------------------
+// Un acumulador es una variable que "va guardando" un resultado que crece.
+// Empieza en 0. Cada vez que el bucle avanza, le sumas el número actual.
+//
+//   Vuelta | i | suma antes | suma después (suma + i)
+//   -------|---|------------|------------------------
+//     1    | 1 |     0      | 1
+//     2    | 2 |     1      | 3
+//     3    | 3 |     3      | 6
+//     4    | 4 |     6      | 10
+//     5    | 5 |    10      | 15  ← resultado final
+//
+// ---------------------------------------------------------------------------
+// PSEUDOCÓDIGO (lógica en español, sin sintaxis estricta)
+// ---------------------------------------------------------------------------
+//   suma ← 0
+//   PARA i DESDE 1 HASTA n HACER
+//     suma ← suma + i
+//   FIN PARA
+//   DEVOLVER suma
+//
+// ---------------------------------------------------------------------------
+// PISTAS DE CÓDIGO EN JAVASCRIPT
+// ---------------------------------------------------------------------------
+// - Declara suma con let y valor inicial 0
+// - Usa for (let i = 1; i <= n; i++) { ... }
+// - Dentro del bucle: suma = suma + i  (o suma += i)
+// - Al terminar el bucle, return suma
+//
 function sumaHastaN(n) {}
 
 // L2 — Tabla de multiplicar
 //
+// ENUNCIADO
 // Dado un número n, imprime su tabla de multiplicar del 1 al 10.
 //
 // Ejemplo con n = 7:
 // 7 x 1 = 7
 // 7 x 2 = 14
+// 7 x 3 = 21
 // ...
 // 7 x 10 = 70
+//
+// ---------------------------------------------------------------------------
+// ¿QUÉ PROBLEMA RESOLVEMOS?
+// ---------------------------------------------------------------------------
+// Queremos mostrar 10 líneas en pantalla: n×1, n×2, ..., n×10.
+// El número n se repite en cada línea; lo que cambia es el multiplicador (1 al 10).
+// Aquí no acumulamos un total: en cada vuelta solo imprimimos una línea.
+//
+// ---------------------------------------------------------------------------
+// METÁFORA DE LA RECETA (análisis antes de codificar)
+// ---------------------------------------------------------------------------
+// 1. Objetivo: mostrar 10 resultados en consola, uno por línea.
+// 2. Ingredientes (variables):
+//    - n        → el número del que hacemos la tabla (ej. 7)
+//    - i        → contador de 1 a 10 (el multiplicador que cambia)
+//    - resultado → n * i (opcional; puedes calcularlo directo al imprimir)
+// 3. Pasos (bucle):
+//    - Repetir i desde 1 hasta 10
+//    - En cada vuelta: calcular n * i e imprimir el texto formateado
+// 4. Prueba: tabla del 7 debe tener 10 líneas; la última debe ser "7 x 10 = 70"
+//
+// ---------------------------------------------------------------------------
+// DIFERENCIA CON L1 (importante)
+// ---------------------------------------------------------------------------
+// En L1 usamos un ACUMULADOR (suma) porque juntamos muchos valores en uno solo.
+// En L2 usamos un bucle para REPETIR UNA ACCIÓN (imprimir), no para acumular.
+// El resultado de cada vuelta se muestra y no se guarda para el final.
+//
+// ---------------------------------------------------------------------------
+// ¿CÓMO SE VE CADA VUELTA DEL BUCLE? (n = 7)
+// ---------------------------------------------------------------------------
+//   i | n * i | lo que imprimes
+//   --|-------|------------------
+//   1 |   7   | 7 x 1 = 7
+//   2 |  14   | 7 x 2 = 14
+//   3 |  21   | 7 x 3 = 21
+//   ... (hasta i = 10)
+//
+// ---------------------------------------------------------------------------
+// PSEUDOCÓDIGO (lógica en español, sin sintaxis estricta)
+// ---------------------------------------------------------------------------
+//   PARA i DESDE 1 HASTA 10 HACER
+//     resultado ← n * i
+//     IMPRIMIR n, " x ", i, " = ", resultado
+//   FIN PARA
+//
+// ---------------------------------------------------------------------------
+// PISTAS DE CÓDIGO EN JAVASCRIPT
+// ---------------------------------------------------------------------------
+// - Usa for (let i = 1; i <= 10; i++) { ... }
+// - Dentro: console.log(n + " x " + i + " = " + (n * i))
+// - Los paréntesis en (n * i) evitan errores si concatenas texto y números
+// - Esta función no necesita return: su efecto es imprimir en consola
+//
 function tablaMultiplicar(n) {}
 
 // L3 — Contador de pares e impares
